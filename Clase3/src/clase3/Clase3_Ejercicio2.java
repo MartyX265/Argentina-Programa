@@ -1,41 +1,52 @@
 
 package clase3;
-
+/*Genere una clase que tenga los métodos para realizar la codificación y decodificación
+de un string, dado un número de desplazamiento.*/
 public class Clase3_Ejercicio2 {
-    public static String CodificarMas1(String texto){
+    public static String Codificar(String texto,int desplazamiento){
         String resultado="";
-        String diccionario="abcdefghijklmnñopqrstuvwxyz0";
+        String abecedario="abcdefghijklmnñopqrstuvwxyz";
+        
         for(int i=0;i<texto.length();i++){
-            if(texto.charAt(i)=='z'){
-               resultado+=diccionario.charAt(diccionario.length()-1);
+            char caracterActual=texto.charAt(i);//Se analiza cada caracter
+            if(caracterActual==' '){//Si es un espacio se le coloca el arroba para diferenciarlo
+                resultado+='@';
+                continue;//Saltar al siguiente ciclo del for
+            }
+            int indice=abecedario.indexOf(caracterActual);//Guardamos el indice del caracter en referencia a su posicion en el abecedario
+            if(indice+desplazamiento>abecedario.length()-1){//Verficamos que el indice mas su desplazamiento no salga del limite
+                indice=((indice+desplazamiento)-abecedario.length()-1);//Si se sale del limite calculamos la diferencia y lo colocamos al principio del abecedario
+                resultado+=abecedario.charAt(indice);//Añadimos el caracter al String
             }else{
-                if(texto.charAt(i)==' '){
-                    resultado+=diccionario.charAt(0);
-                }else{
-                  resultado+=diccionario.charAt(diccionario.indexOf(texto.charAt(i))+1);  
-                }
+                resultado+=abecedario.charAt(indice+desplazamiento);
             }
         }
         return resultado;
     }
-    public static String DecodificarMenos1(String texto){
+    public static String Decodificar(String texto, int desplazamiento){
         String resultado="";
-        String diccionario="abcdefghijklmnñopqrstuvwxyz0";
+        String abecedario="abcdefghijklmnñopqrstuvwxyz";
+        
         for(int i=0;i<texto.length();i++){
-            if(texto.charAt(i)=='0'){
-               resultado+=diccionario.charAt(diccionario.length()-2);
+            char caracterActual=texto.charAt(i);
+            if(caracterActual=='@'){//Revertimos la codificacion del espacio
+                resultado+=' ';
+                continue;
+            }
+            int indice=abecedario.indexOf(caracterActual);
+            if(indice-desplazamiento<0){
+                indice=(abecedario.length()-1)-(indice-desplazamiento);
+                resultado+=abecedario.charAt(indice);
             }else{
-                if(texto.charAt(i)=='a'){
-                    resultado+=' ';
-                }else{
-                  resultado+=diccionario.charAt(diccionario.indexOf(texto.charAt(i))-1);  
-                }
+                resultado+=abecedario.charAt(indice-desplazamiento);
             }
         }
         return resultado;
     }
     public static void main(String[] args){
-        System.out.println(CodificarMas1("hola que tal"));
-        System.out.println(DecodificarMenos1("ipmbarvfaubm"));
+       System.out.println(Codificar("hola que tal",1));
+       System.out.println(Decodificar("ipmb@rvf@ubm",1));
+       System.out.println(Codificar("hola que tal",2));
+       System.out.println(Decodificar("jqnc@swg@vcn",2));
     }
 }
