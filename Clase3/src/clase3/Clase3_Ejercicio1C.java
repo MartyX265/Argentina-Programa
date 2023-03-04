@@ -1,4 +1,4 @@
-
+//Martin Ribotta
 package clase3;
 /*Dado un vector de números, y un número X, que sume todos los números > X y
 retorne el resultado*/
