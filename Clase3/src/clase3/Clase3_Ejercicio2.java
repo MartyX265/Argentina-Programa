@@ -6,9 +6,9 @@ public class Clase3_Ejercicio2 {
     public static String Codificar(String texto,int desplazamiento){
         String resultado="";
         String abecedario="abcdefghijklmnñopqrstuvwxyz";
-        
+        char caracterActual;
         for(int i=0;i<texto.length();i++){
-            char caracterActual=texto.charAt(i);//Se analiza cada caracter
+            caracterActual=texto.charAt(i);//Se analiza cada caracter
             if(caracterActual==' '){//Si es un espacio se le coloca el arroba para diferenciarlo
                 resultado+='@';
                 continue;//Saltar al siguiente ciclo del for
