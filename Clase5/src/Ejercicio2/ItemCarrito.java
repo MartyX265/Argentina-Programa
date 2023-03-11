@@ -1,28 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Ejercicio2;
 
 public class ItemCarrito {
     private String nombreProducto;
-    private int precioUnitario;
-    private int cantidad;
-    
+    private Integer precioUnitario;
+
     public ItemCarrito() {
     }
 
-    public ItemCarrito(String nombreProducto, int precioUnitario, int cantidad) {
+    public ItemCarrito(String nombreProducto, Integer precioUnitario) {
         this.nombreProducto = nombreProducto;
         this.precioUnitario = precioUnitario;
-        this.cantidad = cantidad;
     }
 
     public void setNombreProducto(String nombreProducto) {
         this.nombreProducto = nombreProducto;
     }
 
-    public void setPrecioUnitario(int precioUnitario) {
+    public void setPrecioUnitario(Integer precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
 
@@ -30,19 +25,9 @@ public class ItemCarrito {
         return nombreProducto;
     }
 
-    public int getPrecioUnitario() {
+    public Integer getPrecioUnitario() {
         return precioUnitario;
     }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    
     
     
 }
